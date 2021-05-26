@@ -1,17 +1,17 @@
-import { isMobile } from './helpers.mjs';
+import { isMobile } from "./helpers.mjs";
 
 /**
  * This file deals with what happens when you click "Draw" button text to handwriting.
  */
 
-let inkColor = '#000f55';
+let inkColor = "#000f55";
 const pointSize = isMobile ? 0.5 : 1;
 let lastX;
 let lastY;
 
-const drawCanvas = document.querySelector('canvas#diagram-canvas');
-const ctx = drawCanvas.getContext('2d');
-ctx.fillStyle = 'transparent';
+const drawCanvas = document.querySelector("canvas#diagram-canvas");
+const ctx = drawCanvas.getContext("2d");
+ctx.fillStyle = "transparent";
 ctx.fillRect(0, 0, drawCanvas.width, drawCanvas.height);
 // Set smaller canvas on mobiles
 if (isMobile) {
@@ -55,15 +55,15 @@ function drawPoint(x, y) {
 }
 
 function toggleDrawCanvas() {
-  const drawContainer = document.querySelector('.draw-container');
-  if (drawContainer.classList.contains('show')) {
+  const drawContainer = document.querySelector(".draw-container");
+  if (drawContainer.classList.contains("show")) {
     // draw canvas is currently shown
-    document.querySelector('main').style.display = 'block';
+    document.querySelector("main").style.display = "block";
   } else {
-    document.querySelector('main').style.display = 'none';
+    document.querySelector("main").style.display = "none";
   }
 
-  drawContainer.classList.toggle('show');
+  drawContainer.classList.toggle("show");
 }
 
 function clear() {
@@ -71,32 +71,32 @@ function clear() {
 }
 
 function downloadFile() {
-  const a = document.createElement('a');
-  a.style.display = 'none';
-  a.href = drawCanvas.toDataURL('image/png');
-  a.download = 'diagram.png';
+  const a = document.createElement("a");
+  a.style.display = "none";
+  a.href = drawCanvas.toDataURL("image/png");
+  a.download = "diagram.png";
   document.body.appendChild(a);
   a.click();
 }
 
 function addToPaper() {
-  document.querySelector('#note').innerHTML =
+  document.querySelector("#note").innerHTML =
     /* html */ `
-    <img style="width: 100%;" src="${drawCanvas.toDataURL('image/png')}" />
-  ` + document.querySelector('#note').innerHTML;
+    <img style="width: 100%;" src="${drawCanvas.toDataURL("image/png")}" />
+  ` + document.querySelector("#note").innerHTML;
   toggleDrawCanvas();
 }
 
 function addImageToPaper() {
-  const imagePath = document.querySelector('#image-to-add-in-canvas');
+  const imagePath = document.querySelector("#image-to-add-in-canvas");
   const tempImage = new Image();
-  imagePath.value = '';
+  imagePath.value = "";
   imagePath.click();
-  imagePath.addEventListener('change', function () {
+  imagePath.addEventListener("change", function () {
     const file = this.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.addEventListener('load', function () {
+      reader.addEventListener("load", function () {
         tempImage.src = this.result;
         tempImage.onload = function () {
           if (tempImage.width > tempImage.height) {
@@ -170,26 +170,26 @@ const onTouchMove = (e) => {
 };
 
 /* Event listeners */
-document.querySelector('#clear-draw-canvas').addEventListener('click', clear);
+document.querySelector("#clear-draw-canvas").addEventListener("click", clear);
 document
-  .querySelector('#add-to-paper-button')
-  .addEventListener('click', addToPaper);
+  .querySelector("#add-to-paper-button")
+  .addEventListener("click", addToPaper);
 document
-  .querySelector('#draw-download-button')
-  .addEventListener('click', downloadFile);
+  .querySelector("#draw-download-button")
+  .addEventListener("click", downloadFile);
 
 document
-  .querySelector('#add-new-image-button')
-  .addEventListener('click', addImageToPaper);
+  .querySelector("#add-new-image-button")
+  .addEventListener("click", addImageToPaper);
 
 if (isMobile) {
-  drawCanvas.addEventListener('touchstart', onTouchStart, { passive: true });
-  drawCanvas.addEventListener('touchend', onTouchEnd, { passive: true });
-  drawCanvas.addEventListener('touchmove', onTouchMove, { passive: true });
+  drawCanvas.addEventListener("touchstart", onTouchStart, { passive: true });
+  drawCanvas.addEventListener("touchend", onTouchEnd, { passive: true });
+  drawCanvas.addEventListener("touchmove", onTouchMove, { passive: true });
 } else {
-  drawCanvas.addEventListener('mousedown', onMouseDown, { passive: true });
-  drawCanvas.addEventListener('mouseup', onMouseUp, { passive: true });
-  drawCanvas.addEventListener('mousemove', onMouseMove, { passive: true });
+  drawCanvas.addEventListener("mousedown", onMouseDown, { passive: true });
+  drawCanvas.addEventListener("mouseup", onMouseUp, { passive: true });
+  drawCanvas.addEventListener("mousemove", onMouseMove, { passive: true });
 }
 
 export { setInkColor, drawPoint, toggleDrawCanvas };

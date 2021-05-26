@@ -8,8 +8,8 @@ body {
   --font-color-primary: #333;
   --elevation-background: #f3f3f3;
   --link-color: #006eb8;
-  --font-family-primary: 'Roboto', Arial;
-  --handwriting-font: 'Homemade Apple', cursive;
+  --font-family-primary: "Roboto", Arial;
+  --handwriting-font: "Homemade Apple", cursive;
   --primary-color: #1a73e8;
   --ink-color: #000f55;
   --label-color: #333;
@@ -18,6 +18,7 @@ body {
   --primary-button-color: #eee;
   --font-color-delete: #dc3545;
   --delete-button-borders: #dc3545;
+  --transform-content: rotate(0deg);
 
   width: 100%;
   overflow-x: hidden;
@@ -35,7 +36,7 @@ body.dark {
   --font-color-delete: #e76f7b;
 }
 @font-face {
-  font-family: 'Hindi_Font';
+  font-family: "Hindi_Font";
   src: url(../fonts/Hindi_Type.ttf);
 }
 
@@ -46,7 +47,7 @@ body.dark {
 body {
   background-color: var(--background-primary);
   color: var(--font-color-primary);
-  padding: 100px 100px;
+  padding: 30px 100px;
   font-size: 1.05rem;
   font-family: var(--font-family-primary);
 }
@@ -81,7 +82,7 @@ label.block {
 }
 
 select {
-  background: url('../images/dropdown.svg') no-repeat;
+  background: url("../images/dropdown.svg") no-repeat;
   background-position: calc(100% - 14px) center;
   border: none;
   color: #333;
@@ -97,7 +98,7 @@ option {
 }
 
 body.dark select {
-  background: url('../images/dropdown-white.svg') no-repeat;
+  background: url("../images/dropdown-white.svg") no-repeat;
   background-position: calc(100% - 14px) center;
 }
 
@@ -109,12 +110,12 @@ input {
   background-color: transparent;
   display: block;
 }
-input[type='number']::-webkit-outer-spin-button,
-input[type='number']::-webkit-inner-spin-button {
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield !important;
   -webkit-appearance: none;
   width: 100%;
@@ -206,42 +207,52 @@ body.dark .github-corner {
 .page-a {
   width: 400px;
   height: calc(11.7 * 400px / 8.3); /* A4 Ratio */
-  background: #fff;
+  background: url("../images/bg.jpeg") no-repeat;
   border: 1px solid var(--elevation-background);
   font-size: 10pt;
   position: relative;
   top: 0px;
   font-family: var(--handwriting-font);
   color: var(--ink-color);
-  line-height: 1.5em;
+
   overflow-y: auto;
   scrollbar-color: transparent;
   scrollbar-width: thin;
 }
 .paper-content {
-  margin: 10px;
   width: 100%;
+  z-index: 10;
+  line-height: 30px !important;
 }
-.page-a.lines .paper-content {
-  background-image: linear-gradient(#999 0.05em, transparent 0.1em);
-  background-color: unset !important;
-  background-size: 100% 1.5em;
+
+#note {
+  position: absolute;
+}
+
+#noteheader {
+  position: absolute;
+  top: 10px;
+  left: 30%;
+  text-align: center;
+  cursor: move;
+  z-index: 11;
+  background-color: #121212;
+  color: lemonchiffon;
+  font-family: var(--font-family-primary);
 }
 
 .margined .paper-content {
   padding: 5px;
   margin: 0px;
-  padding-left: 55px;
 }
 
 .left-margin,
 .top-margin {
-  display: none;
+  display: block;
 }
 
 .margined .top-margin {
   height: 50px;
-  border-bottom: 2px solid pink;
   width: 100%;
   display: block;
   overflow-y: auto;
@@ -251,7 +262,7 @@ body.dark .github-corner {
   width: 50px;
   height: calc(100%);
   display: inline-block;
-  border-right: 2px solid pink;
+
   top: 0px;
   padding-top: 50px;
   overflow-x: hidden;
@@ -407,15 +418,15 @@ input {
   color: var(--font-color-primary);
 }
 
-input[type='file']::-webkit-file-upload-button {
+input[type="file"]::-webkit-file-upload-button {
   display: none;
 }
-input[type='file']::before {
-  content: 'Choose File';
+input[type="file"]::before {
+  content: "Choose File";
   display: inline-block;
   background-color: var(--background-primary);
   white-space: nowrap;
-  -webkit-user-select: none;
+  /*-webkit-user-select: none;*/
   cursor: pointer;
 }
 
