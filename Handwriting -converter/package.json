@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saurabhdaware/text-to-handwriting.git"
+    "url": "git+https://github.com/sparshvrao/Handwriting-converter.git"
   },
   "keywords": [],
-  "author": "Saurabh Daware <saurabhdaware99@gmail.com> (https://saurabhdaware.in/)",
+  "author": "Sparsh Rao <sparshrao1@gmail.com> ",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/saurabhdaware/text-to-handwriting/issues"
+    "url": "https://github.com/sparshvrao/Handwriting-converter/issues"
   },
-  "homepage": "https://github.com/saurabhdaware/text-to-handwriting#readme",
+  "homepage": "https://github.com/sparshvrao/Handwriting-converter#readme",
   "devDependencies": {
     "cypress": "^4.4.1",
     "eslint": "^7.0.0",

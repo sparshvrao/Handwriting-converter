@@ -12,6 +12,7 @@
  *	@param options object The options object
  *	@license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
  (function($){
 
     /**
@@ -22,7 +23,7 @@
         function _createTemp(element) {
             return element.clone().css({position: 'absolute'});
         };
-    
+        
     /**
      * Splits contents into words, keeping their original Html tag. Note that this
      * tags *each* word with the tag it was found in, so when the wrapping begins
@@ -149,5 +150,131 @@
             this.html(newHtml.html());
     
         };
+
+        function randommer(lval){
+            var val=((Math.random()*2-1)*(lval));
+            return val;
+        }
+
+        $.fn.getText = function(){
+            var tots = document.getElementById("note").textContent;
+            document.getElementById("note").innerHTML=tots;
+        };
+
+        $.fn.randomizelinemargin = function(number){
+            let children = $(this.selector).children();
+            for(let i=0;i<children.length;i++){
+                children[i].style["margin-left"]= (Math.random()*2-1)*number+"px";
+            }
+        };
+
+        $.fn.randomizelinespacing = function(number){
+            let children = $(this.selector).children();
+            for(let i=0;i<children.length;i++){
+                children[i].style["line-height"]= ((Math.random())*number+30)+"px";
+            }
+        };
+        $.fn.randomizeletterspacing = function(number){
+            let children = $(this.selector).children();
+            for(let i=0;i<children.length;i++){
+                let words= children[i].children;
+                for(let j=0;j<words.length;j++){
+                    if(words[j].getAttribute("class")!="tabber"){
+                        words[j].style["letter-spacing"]= (Math.random())*number+"px";
+                    }
+                }
+            }
+        };
+
+        $.fn.randomizeletterrotation = function(lval){
+            let children = $(this.selector).children();
+            for(let i=0;i<children.length;i++){
+                let words= children[i].children;
+                for(let j=0;j<words.length;j++){
+                    if(words[j].getAttribute("class")!="tabber"){
+                        let letters= words[j].children;
+                        for(let k=0;k<letters.length;k++){
+                            letters[k].style["display"]="inline-block";
+                            letters[k].style["transform"] ="rotate(" + randommer(lval) + "deg) ";
+                        }
+                }
+            }
+            }
+        };
+
+        $.fn.randomizelinerotation = function(lval){
+            let children = $(this.selector).children();
+            for(let i=0;i<children.length;i++){
+                children[i].style["display"]="inline-block";
+                children[i].style["transform"] ="rotate(" + randommer(lval) + "deg) ";
+            }
+        };
+
+        $.fn.randomizewordrotation = function(lval){
+            let children = $(this.selector).children();
+            for(let i=0;i<children.length;i++){
+                let words= children[i].children;
+                for(let j=0;j<words.length;j++){
+                    words[j].style["display"]="inline-block";
+                    words[j].style["transform"] ="rotate(" + randommer(lval) + "deg) ";
+                }
+            }
+        };
+
+        $.fn.inactive = function(options){
+            let elements= document.getElementsByClassName(options["class"]);
+            for(let i=0;i<elements.length;i++){
+                elements[i].style["pointer-events"]="none";
+                elements[i].style["opacity"]="0.8";
+            }
+        };
+
+        $.fn.active = function(options){
+            let elements= document.getElementsByClassName(options["class"]);
+            for(let i=0;i<elements.length;i++){
+                elements[i].style["pointer-events"]="unset";
+                elements[i].style["opacity"]="1";
+            }
+        };
+
+        $.fn.callall = function(){
+            let inputs=$(".full-random-class").find(".qtyValue");
+            for(let i=0;i<inputs.length;i++){
+                inputs[i].dispatchEvent(new Event("change"));
+                console.log(inputs[i]);
+                
+            }
+        };
+
+        $.fn.wordsegmentation = function(){
+            let spans = $("#note").find("span");
+            let text="";
+            for(let i=0;i<spans.length;i++){
+
+                spans[i].setAttribute("id","linesplit"+String(i));
+                spans[i].setAttribute("class","lines")
+            }
+            for(let i=0;i<spans.length;i++){
+                let val=$("#linesplit"+String(i));
+                text=splitWords(val);
+                spans[i].innerHTML=text;
+            }
+        };
+
+        var splitWords = function(val){
+            let list=_splitHtmlWords( val.contents());
+            let text=""
+            let intext=""
+            for(let i=0;i<list.length;i++){
+                intext=""
+                for(let j=0;j<list[i].length;j++){
+                    intext+="<span  class='lettersplit"+String(j)+"'>"+list[i][j]+"</span>";
+                }
+                text+="<span  class='wordsplit"+String(i)+"'>"+intext+" <span class='tabber'></span>"+"</span>";
+            }
+            return text;
+        };
+
+
     })(jQuery);
     

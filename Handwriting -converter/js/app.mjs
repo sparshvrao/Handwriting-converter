@@ -19,7 +19,7 @@ import { setInkColor, toggleDrawCanvas } from "./utils/draw.mjs";
  * related to the issue you've choosen.
  *
  * If you have any questions related to code, you can drop them in my Twitter DM @saurabhcodes
- * or in my email at saurabhdaware99@gmail.com
+ * or in my email at sparshrao1@gmail.com
  *
  * Thanks! and Happy coding 🌻
  *
@@ -33,15 +33,6 @@ const setTextareaStyle = (attrib, v) => (pageEl.style[attrib] = v);
 
 const setContentStyle = (attrib, v) => (papercontent.style[attrib] = v);
 
-function countLines(classname) {
-  var el = document.getElementsByClassName(classname)[0];
-  var divHeight = el.offsetHeight;
-  console.log(el);
-  var lineHeight = parseInt(el.style["lineHeight"]);
-  alert(lineHeight);
-  var lines = divHeight / lineHeight;
-  window.alert("Lines: " + lines);
-}
 
 /**
  * Add event listeners here, they will be automatically mapped with addEventListener later
@@ -70,7 +61,7 @@ const EVENT_MAP = {
       }
     },
   },
-  "#letter-spacing": {
+  "#letter-spacing1": {
     on: "change",
     action: (e) => {
       if (e.target.value > 40) {
@@ -93,13 +84,13 @@ const EVENT_MAP = {
       }
     },
   },
-  "#letter-rotation": {
+  "#line-spacing1": {
     on: "change",
     action: (e) => {
-      if (e.target.value > 40) {
-        alert("Letter Rotation is too much try a smaller number");
+      if (e.target.value > 100) {
+        alert("Line Spacing is too big try a number upto hundred");
       } else {
-        setTextareaStyle("wordSpacing", e.target.value + "px");
+        $("#note").css({"line-height": e.target.value + "px"});
 
         e.preventDefault();
       }
@@ -132,7 +123,80 @@ const EVENT_MAP = {
   },
   "#note": {
     on: "click",
-    action: (e) => {},
+    action: (e) => {
+      console.log("changes");
+      //document.getElementById("letter-random").checked=false;
+      //document.getElementById("letter-random-status").innerHTML="off";
+    },
+  },
+  "#Randomizer": {
+    on: "change",
+    action: (e) => {
+      console.log(e);
+      if (document.getElementById(e.target.id).checked == true) {
+        $("#note").splitLines({ tag: "<span>" });
+        //document.getElementById("note").style["display"]="inline";
+        $("").wordsegmentation();
+        $("#note").callall();
+        $("").active({class:"random-class"});
+        $(".paper-content").css({"box-sizing": "unset"});
+      } else {
+        $("#note").getText();
+        $("").inactive({class:"random-class"});
+      }
+    },
+  },
+
+  ".Randomizer": {
+    on: "sick",
+    action: (e) => {
+      if (document.getElementById("Randomizer").checked == true) {
+        document.getElementById("Randomizer").checked = false;
+        document.getElementById("Randomizer-status").innerHTML = "off";
+        document
+          .getElementsByClassName("Randomizer")[0]
+          .dispatchEvent(new Event("change"));
+        alert("Please do the changes and then activate randomizer");
+      } else {
+        console.log("hello");
+      }
+    },
+  },
+  "#line-indentation": {
+    on: "change",
+    action: (e) => {
+      $("#note").randomizelinemargin(e.target.value);
+    },
+  },
+  "#line-spacing": {
+    on: "change",
+    action: (e) => {
+      $("#note").randomizelinespacing(e.target.value);
+    },
+  },
+  "#letter-spacing": {
+    on: "change",
+    action: (e) => {
+      $("#note").randomizeletterspacing(e.target.value);
+    },
+  },
+  "#letter-rotation": {
+    on: "change",
+    action: (e) => {
+      $("#note").randomizeletterrotation(e.target.value);
+    },
+  },
+  "#line-rotation": {
+    on: "change",
+    action: (e) => {
+      $("#note").randomizelinerotation(e.target.value);
+    },
+  },
+  "#word-rotation": {
+    on: "change",
+    action: (e) => {
+      $("#note").randomizewordrotation(e.target.value);
+    },
   },
   "#draw-diagram-button": {
     on: "click",
