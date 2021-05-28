@@ -219,9 +219,7 @@ body.dark .github-corner {
   scrollbar-color: transparent;
   scrollbar-width: thin;
   overflow-x: hidden;
-
 }
-
 
 .paper-content {
   width: 100%;
@@ -233,9 +231,9 @@ body.dark .github-corner {
   position: absolute;
 }
 
-.tabber{
+.tabber {
   display: inline;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 #noteheader {
@@ -251,8 +249,8 @@ body.dark .github-corner {
   font-family: var(--font-family-primary);
 }
 
-.page-a:hover #noteheader{
-  display:block;
+.page-a:hover #noteheader {
+  display: block;
 }
 
 .margined .paper-content {
@@ -293,10 +291,9 @@ body.dark .github-corner {
   display: none;
 }
 
-.lines{
+.lines {
   box-sizing: unset;
 }
-
 
 .overlay.shadows {
   display: block;
@@ -305,51 +302,51 @@ body.dark .github-corner {
 
 /*Increase and Decrease buttons*/
 
-.qtySelector{
-	border: 1px solid #ddd;
+.qtySelector {
+  border: 1px solid #ddd;
   border-radius: 5px;
-	width: 100%;
-	height: 35px;
+  width: 100%;
+  height: 35px;
   max-width: 140px;
-  display:flex;
+  display: flex;
   flex-direction: row;
 }
-.qtySelector .fa{
-	padding:7% 10% 7% 12%;
+.qtySelector .fa {
+  padding: 7% 10% 7% 12%;
   font-size: 80%;
-	width: 35%;
-	height: 100%;
-	float: left;
-	cursor: pointer;
+  width: 35%;
+  height: 100%;
+  float: left;
+  cursor: pointer;
   align-self: center;
 }
 
-.qtySelector .fa:hover{
-  color:green;
+.qtySelector .fa:hover {
+  color: green;
   background-color: lightcyan;
 }
 
-.qtySelector .fa:active{
-	font-size: 60%;
-	padding-top: -3%;
+.qtySelector .fa:active {
+  font-size: 60%;
+  padding-top: -3%;
 }
 
-.qtySelector .fa-minus{
-	border-right: 1px solid #ddd;
+.qtySelector .fa-minus {
+  border-right: 1px solid #ddd;
 }
-.qtySelector .fa-plus{
-	border-left: 1px solid #ddd;
+.qtySelector .fa-plus {
+  border-left: 1px solid #ddd;
 }
-.qtySelector .qtyValue{
-	border: none;
-	padding: 5px;
-	width: 30%;
-	height: 100%;
-	float: left;
-	text-align: center
+.qtySelector .qtyValue {
+  border: none;
+  padding: 5px;
+  width: 30%;
+  height: 100%;
+  float: left;
+  text-align: center;
 }
 
-.random-class{
+.random-class {
   pointer-events: none;
   opacity: 0.8;
 }
@@ -366,11 +363,11 @@ body.dark .github-corner {
   width:75px;
 } */
 
-.dash{
-  color:red;
-  margin:2px;
+.dash {
+  color: red;
+  margin: 2px;
   font-size: 70%;
-  padding:2% 1% 5% 1%;
+  padding: 2% 1% 5% 1%;
 }
 
 /* OUTPUT */
@@ -526,10 +523,9 @@ input[type="file"]::before {
   display: block;
   margin-top: 10px;
   margin-bottom: 5px;
-
 }
 
-.random-class label{
+.random-class label {
   text-align: justify;
 }
 

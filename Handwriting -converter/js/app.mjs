@@ -33,7 +33,6 @@ const setTextareaStyle = (attrib, v) => (pageEl.style[attrib] = v);
 
 const setContentStyle = (attrib, v) => (papercontent.style[attrib] = v);
 
-
 /**
  * Add event listeners here, they will be automatically mapped with addEventListener later
  */
@@ -90,7 +89,7 @@ const EVENT_MAP = {
       if (e.target.value > 100) {
         alert("Line Spacing is too big try a number upto hundred");
       } else {
-        $("#note").css({"line-height": e.target.value + "px"});
+        $("#note").css({ "line-height": e.target.value + "px" });
 
         e.preventDefault();
       }
@@ -138,11 +137,11 @@ const EVENT_MAP = {
         //document.getElementById("note").style["display"]="inline";
         $("").wordsegmentation();
         $("#note").callall();
-        $("").active({class:"random-class"});
-        $(".paper-content").css({"box-sizing": "unset"});
+        $("").active({ class: "random-class" });
+        $(".paper-content").css({ "box-sizing": "unset" });
       } else {
         $("#note").getText();
-        $("").inactive({class:"random-class"});
+        $("").inactive({ class: "random-class" });
       }
     },
   },
