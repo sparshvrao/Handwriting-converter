@@ -18,7 +18,7 @@ import { setInkColor, toggleDrawCanvas } from "./utils/draw.mjs";
  * To contribute, you can follow the imports above and make changes in the file
  * related to the issue you've choosen.
  *
- * If you have any questions related to code, you can drop them in my 
+ * If you have any questions related to code, you can drop them in my
  * email at sparshrao1@gmail.com
  *
  * Thanks! and Happy coding 🌻
@@ -148,7 +148,6 @@ const EVENT_MAP = {
         //document.getElementsByClassName("paper-content")[0].style.removeProperty("box-sizing");
         $("#note").getText();
         $("").inactive({ class: "random-class" });
-        
       }
     },
   },

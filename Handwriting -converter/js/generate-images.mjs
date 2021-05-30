@@ -25,7 +25,6 @@ async function convertDIVToImage() {
   /** Function html2canvas comes from a library html2canvas which is included in the index.html */
   const canvas = await html2canvas(document.querySelector(".page-a"), options);
 
-
   /** Send image data for modification if effect is scanner */
   if (document.querySelector("#page-effects").value === "scanner") {
     const context = canvas.getContext("2d");
