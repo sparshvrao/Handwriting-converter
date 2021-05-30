@@ -18,16 +18,16 @@ import { setInkColor, toggleDrawCanvas } from "./utils/draw.mjs";
  * To contribute, you can follow the imports above and make changes in the file
  * related to the issue you've choosen.
  *
- * If you have any questions related to code, you can drop them in my Twitter DM @saurabhcodes
- * or in my email at sparshrao1@gmail.com
+ * If you have any questions related to code, you can drop them in my 
+ * email at sparshrao1@gmail.com
  *
  * Thanks! and Happy coding 🌻
  *
  */
 
-const pageEl = document.querySelector(".page-a");
+const pageEl = document.querySelector(".paper-content");
 
-const papercontent = document.querySelector(".paper-content");
+const papercontent = document.querySelector(".page-a");
 
 const setTextareaStyle = (attrib, v) => (pageEl.style[attrib] = v);
 
@@ -56,6 +56,7 @@ const EVENT_MAP = {
         alert("Font-size is too big try upto 30");
       } else {
         setTextareaStyle("fontSize", e.target.value + "pt");
+        setContentStyle("fontSize", e.target.value + "pt");
         e.preventDefault();
       }
     },
@@ -67,6 +68,7 @@ const EVENT_MAP = {
         alert("Letter Spacing is too big try a number upto 40");
       } else {
         setTextareaStyle("letterSpacing", e.target.value + "px");
+        setContentStyle("letterSpacing", e.target.value + "px");
         e.preventDefault();
       }
     },
@@ -78,6 +80,7 @@ const EVENT_MAP = {
         alert("Word Spacing is too big try a number upto hundred");
       } else {
         setTextareaStyle("wordSpacing", e.target.value + "px");
+        setContentStyle("wordSpacing", e.target.value + "px");
 
         e.preventDefault();
       }
@@ -138,10 +141,14 @@ const EVENT_MAP = {
         $("").wordsegmentation();
         $("#note").callall();
         $("").active({ class: "random-class" });
-        $(".paper-content").css({ "box-sizing": "unset" });
+        $("#note").increasewidth(80);
+        //document.getElementsByClassName("paper-content")[0].style["box-sizing"]= "unset";
       } else {
+        $("#note").decreasewidth(80);
+        //document.getElementsByClassName("paper-content")[0].style.removeProperty("box-sizing");
         $("#note").getText();
         $("").inactive({ class: "random-class" });
+        
       }
     },
   },
@@ -176,7 +183,7 @@ const EVENT_MAP = {
   "#letter-spacing": {
     on: "change",
     action: (e) => {
-      $("#note").randomizeletterspacing(e.target.value);
+      //$("#note").randomizeletterspacing(e.target.value);
     },
   },
   "#letter-rotation": {

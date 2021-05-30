@@ -160,6 +160,17 @@
             var tots = document.getElementById("note").textContent;
             document.getElementById("note").innerHTML=tots;
         };
+        $.fn.increasewidth =function(val){
+            $(this.selector).css({"width":String(400+val)+"px"});
+            console.log($(this.selector).css("width"));
+        };
+
+        $.fn.decreasewidth =function(val){
+            let currwidth=$(this.selector).css("width");
+            
+            $(this.selector).css({"width":String(400)+"px"});
+            console.log($(this.selector).css("width"));
+        };
 
         $.fn.randomizelinemargin = function(number){
             let children = $(this.selector).children();
@@ -171,7 +182,7 @@
         $.fn.randomizelinespacing = function(number){
             let children = $(this.selector).children();
             for(let i=0;i<children.length;i++){
-                children[i].style["line-height"]= ((Math.random())*number+30)+"px";
+                children[i].style["line-height"]= ((Math.random())*number+20)+"px";
             }
         };
         $.fn.randomizeletterspacing = function(number){
@@ -244,6 +255,7 @@
                 console.log(inputs[i]);
                 
             }
+            
         };
 
         $.fn.wordsegmentation = function(){

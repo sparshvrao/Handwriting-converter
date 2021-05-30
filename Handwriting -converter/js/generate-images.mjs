@@ -6,6 +6,7 @@ import {
 import { createPDF } from "./utils/helpers.mjs";
 
 const pageEl = document.querySelector(".page-a");
+const papercontent = document.querySelector(".paper-content");
 let outputImages = [];
 
 /**
@@ -19,9 +20,11 @@ async function convertDIVToImage() {
     scale: document.querySelector("#resolution").value,
     useCORS: true,
   };
-
+  console.log(document.body.style.getProperty("--handwriting-font"));
+  alert();
   /** Function html2canvas comes from a library html2canvas which is included in the index.html */
-  const canvas = await html2canvas(pageEl, options);
+  const canvas = await html2canvas(document.querySelector(".page-a"), options);
+
 
   /** Send image data for modification if effect is scanner */
   if (document.querySelector("#page-effects").value === "scanner") {
@@ -32,6 +35,7 @@ async function convertDIVToImage() {
   }
 
   outputImages.push(canvas);
+
   // Displaying no. of images on addition
   if (outputImages.length >= 1) {
     document.querySelector("#output-header").textContent =
@@ -51,7 +55,7 @@ export async function generateImages() {
   const clientHeight = 514; // height of .paper-content when there is no content
 
   const totalPages = Math.ceil(scrollHeight / clientHeight);
-
+  console.log(totalPages);
   if (totalPages > 1) {
     // For multiple pages
     if (paperContentEl.innerHTML.includes("<img")) {
@@ -61,7 +65,6 @@ export async function generateImages() {
     }
     const initialPaperContent = paperContentEl.innerHTML;
     const splitContent = initialPaperContent.split(/(\s+)/);
-
     // multiple images
     let wordCount = 0;
     for (let i = 0; i < totalPages; i++) {

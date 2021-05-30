@@ -16,8 +16,8 @@ function isFontErrory() {
 }
 
 function applyPaperStyles() {
-  pageEl.style.border = "none";
-  pageEl.style.overflowY = "hidden";
+  //pageEl.style.border = "none";
+  //pageEl.style.overflowY = "hidden";
 
   // Adding class shadows even if effect is scanner
   if (document.querySelector("#page-effects").value === "scanner") {
@@ -31,7 +31,7 @@ function applyPaperStyles() {
     // Since If the lit part happens to be on margins, the margins get invisible
     overlayEl.style.background = `linear-gradient(${
       Math.floor(Math.random() * (120 - 50 + 1)) + 50
-    }deg, #0008, #0000)`;
+    }deg, #0008, #525252)`;
   } else if (document.querySelector("#page-effects").value === "shadows") {
     overlayEl.style.background = `linear-gradient(${
       Math.random() * 360
@@ -43,6 +43,7 @@ function applyPaperStyles() {
       paperContentEl.style.paddingTop.replace(/px/g, "") || 5;
     const newPadding = Number(paperContentPadding) - 5;
     paperContentEl.style.paddingTop = `${newPadding}px`;
+    console.log("error");
   }
 }
 

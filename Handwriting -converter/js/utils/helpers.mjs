@@ -7,7 +7,8 @@ function addFontFromFile(fileObj) {
     const newFont = new FontFace("temp-font", e.target.result);
     newFont.load().then((loadedFace) => {
       document.fonts.add(loadedFace);
-      pageEl.style.fontFamily = "temp-font";
+
+      document.body.style.setProperty("--handwriting-font", "temp-font");
     });
   };
   reader.readAsArrayBuffer(fileObj);
