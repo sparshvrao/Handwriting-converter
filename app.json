@@ -13,7 +13,7 @@
     "format": "npm run prettier",
     "cy": "cypress open",
     "dev": "serve .",
-    "start": " npm run serve ."
+    "start": "serve ."
   },
   "repository": {
     "type": "git",
