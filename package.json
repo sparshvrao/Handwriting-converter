@@ -12,7 +12,8 @@
     "prettier": "prettier --write \"./index.html\" \"js/**/**.mjs\" \"css/**.css\"",
     "format": "npm run prettier",
     "cy": "cypress open",
-    "dev": "serve ."
+    "dev": "serve .",
+    "start": "serve ."
   },
   "repository": {
     "type": "git",
