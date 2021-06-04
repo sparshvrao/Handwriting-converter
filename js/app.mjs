@@ -98,6 +98,30 @@ const EVENT_MAP = {
       }
     },
   },
+  "#font-weight": {
+    on: "change",
+    action: (e) => {
+      if (e.target.value > 100) {
+        alert("Line Spacing is too big try a number upto hundred");
+      } else {
+        $("#note").css({ "font-weight": Number(e.target.value)*100 });
+
+        e.preventDefault();
+      }
+    },
+  },
+  "#transparency": {
+    on: "change",
+    action: (e) => {
+      if (e.target.value > 100) {
+        alert("Line Spacing is too big try a number upto hundred");
+      } else {
+        $("#note").css({ "opacity": parseFloat(e.target.value)/100 });
+
+        e.preventDefault();
+      }
+    },
+  },
   "#top-padding": {
     on: "change",
     action: (e) => {
@@ -126,7 +150,7 @@ const EVENT_MAP = {
   "#note": {
     on: "click",
     action: (e) => {
-      console.log("changes");
+      //console.log("changes");
       //document.getElementById("letter-random").checked=false;
       //document.getElementById("letter-random-status").innerHTML="off";
     },
@@ -134,14 +158,17 @@ const EVENT_MAP = {
   "#Randomizer": {
     on: "change",
     action: (e) => {
-      console.log(e);
+      //console.log(e);
       if (document.getElementById(e.target.id).checked == true) {
+        $("#note").remdev();
         $("#note").splitLines({ tag: "<span>" });
         //document.getElementById("note").style["display"]="inline";
         $("").wordsegmentation();
         $("#note").callall();
         $("").active({ class: "random-class" });
         $("#note").increasewidth(80);
+        
+        
         //document.getElementsByClassName("paper-content")[0].style["box-sizing"]= "unset";
       } else {
         $("#note").decreasewidth(80);
@@ -153,14 +180,14 @@ const EVENT_MAP = {
   },
 
   ".Randomizer": {
-    on: "sick",
+    on: "pick",
     action: (e) => {
       if (document.getElementById("Randomizer").checked == true) {
-        document.getElementById("Randomizer").checked = false;
-        document.getElementById("Randomizer-status").innerHTML = "off";
-        document
-          .getElementsByClassName("Randomizer")[0]
-          .dispatchEvent(new Event("change"));
+        // document.getElementById("Randomizer").checked = false;
+        // document.getElementById("Randomizer-status").innerHTML = "off";
+        // document
+        //   .getElementsByClassName("Randomizer")[0]
+        //   .dispatchEvent(new Event("change"));
         alert("Please do the changes and then activate randomizer");
       } else {
         console.log("hello");
@@ -182,7 +209,7 @@ const EVENT_MAP = {
   "#letter-spacing": {
     on: "change",
     action: (e) => {
-      //$("#note").randomizeletterspacing(e.target.value);
+      $("#note").randomizeletterspacing(e.target.value);
     },
   },
   "#letter-rotation": {
@@ -238,7 +265,7 @@ const EVENT_MAP = {
 };
 
 for (const eventSelector in EVENT_MAP) {
-  console.log(eventSelector);
+  //console.log(eventSelector);
   document
     .querySelector(eventSelector)
     .addEventListener(

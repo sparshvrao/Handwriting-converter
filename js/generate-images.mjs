@@ -20,10 +20,8 @@ async function convertDIVToImage() {
     scale: document.querySelector("#resolution").value,
     useCORS: true,
   };
-  console.log(document.body.style.getProperty("--handwriting-font"));
-  alert();
   /** Function html2canvas comes from a library html2canvas which is included in the index.html */
-  const canvas = await html2canvas(document.querySelector(".page-a"), options);
+  const canvas = await html2canvas(pageEl, options);
 
   /** Send image data for modification if effect is scanner */
   if (document.querySelector("#page-effects").value === "scanner") {

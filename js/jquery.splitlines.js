@@ -103,7 +103,8 @@
                 width: 'auto',
                 tag: '<div>',
                 wrap: '',
-                keepHtml: true
+                keepHtml: true,
+                nextline: "/div/"
             };
             if (options) {
                 $.extend(settings, options);
@@ -128,11 +129,22 @@
             var lineCount = 0;
             for (var w=0; w<words.length; w++) {
                 var html = tempLine.html();
+                if(words[w]==settings.nextline){
+                    tempLine.html(html);
+                    newHtml.append(_markupContent(settings.tag, tempLine.html(), lineCount));
+                    tempLine.html('');
+                    lineCount++;
+                    console.log(newHtml.html());
+                    continue;
+                }
                 tempLine.html(html+words[w]+' ');
+                //console.log("Outside",tempLine.html());
                 if (tempLine.html() == prev) {
                     // repeating word, it will never fit so just use it instead of failing
                     prev = '';
                     newHtml.append(_markupContent(settings.tag, tempLine.html(), lineCount));
+                    
+
                     tempLine.html('');
                     continue;
                 }
@@ -157,8 +169,20 @@
         }
 
         $.fn.getText = function(){
+            var tots = document.getElementById("note").childNodes;
+            var newHtml="";
+            console.log(tots.length);
+            for(let i=0;i<tots.length;i++){
+                if(tots[i].tagName=="BR"){
+                    newHtml+="<br>";
+                    alert();
+                }else{
+                    newHtml+=tots[i].textContent;
+                }
+            }
+            
             var tots = document.getElementById("note").textContent;
-            document.getElementById("note").innerHTML=tots;
+            document.getElementById("note").innerHTML=newHtml;
         };
         $.fn.increasewidth =function(val){
             $(this.selector).css({"width":String(400+val)+"px"});
@@ -170,6 +194,19 @@
             
             $(this.selector).css({"width":String(400)+"px"});
             console.log($(this.selector).css("width"));
+        };
+
+        $.fn.remdev= function(){
+            var noter = String(document.getElementById("note").innerHTML);
+            console.log(noter);
+            while(noter.search("<div>")!=-1){
+            noter=noter.replace("<div>"," /div/ ");
+            }
+            while(noter.search("</div>")!=-1){
+            noter=noter.replace("</div>","");
+            }
+            console.log(noter);
+            document.getElementById("note").innerHTML=noter;
         };
 
         $.fn.randomizelinemargin = function(number){
@@ -264,7 +301,7 @@
             for(let i=0;i<spans.length;i++){
 
                 spans[i].setAttribute("id","linesplit"+String(i));
-                spans[i].setAttribute("class","lines")
+                spans[i].setAttribute("class","lines");
             }
             for(let i=0;i<spans.length;i++){
                 let val=$("#linesplit"+String(i));

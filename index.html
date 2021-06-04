@@ -126,7 +126,31 @@
             src="images/moon.svg"
         /></span>
       </button>
-      <h1>Text to Handwriting</h1>
+      <h1 style="text-align: center;">Text to Handwriting</h1>
+
+      <section id="how-to-add-handwriting">
+        <h2 >🤔 How to use?</h2>
+        <div>
+          <ul>
+            <li>
+              Type/Paste the the text you want to convert inside the input below.
+            </li>
+            <li>
+              Format the text however you like,using the <b>customizations</b> available.
+            </li>
+            <li>
+              <b>Use the <u>Randomization</u> options at the last</b>, once all changes have been done .
+            </li>
+            <li>
+              While doing changes to the input <b>Randomizer</b> should be off for the page <br>
+              to function properly .
+            </li>
+            <li>
+              Try to generate 1 page at a time, multiple pages might take some time to generate .
+            </li>
+          </ul>
+        </div>
+      </section>
 
       <section class="generate-image-section">
         <form id="generate-image-form">
@@ -148,7 +172,7 @@
                     </div>
                     <div
                       style="padding-left: 50px;"
-                      data-js="split-mer"
+                      
                       class="paper-content"
                       id="note"
                       contenteditable="true"
@@ -335,7 +359,7 @@
                       min="-40"
                       max="40"
                       value="20"
-                      type="number"
+                      type="text"
                     />
                   </div>
                   <div class="postfix-input" data-postfix="px">
@@ -345,9 +369,11 @@
                       min="-20"
                       max="100"
                       value="0"
-                      type="number"
+                      type="text"
                     />
                   </div>
+                  </div>
+                  <div class="category-grid">
                   <div class="postfix-input" data-postfix="pt">
                     <label for="letter-spacing1">Letter Spacing</label>
                     <input
@@ -358,8 +384,82 @@
                       type="number"
                     />
                   </div>
+                  <div class="postfix-input" data-postfix="pt">
+                    <label for="font-weight">Font Weight</label>
+                    <input
+                      id="font-weight"
+                      min="-40"
+                      max="40"
+                      value="5"
+                      type="number"
+                    />
+                  </div>
+                  <div class="postfix-input" data-postfix="%">
+                    <label for="transparency">Font Transparency</label>
+                    <input
+                      id="transparency"
+                      min="0"
+                      max="100"
+                      value="100"
+                      type="text"
+                    />
+                  </div>
                 </div>
               </fieldset>
+
+              <fieldset>
+                <legend>Background Options</legend>
+
+                <div class="category-grid">
+                  <!-- <div>
+                  <label for="paper-margin-toggle">Paper Margin:
+                    <span aria-label="paper margin status" class="status">on</span>
+                  </label>
+                  <label class="switch-toggle outer">
+                    <input aria-checked="true" checked aria-label="Paper Margin Button" id="paper-margin-toggle"
+                      type="checkbox" />
+                    <div></div>
+                  </label>
+                </div> -->
+
+                  <!-- <div>
+                  <label for="paper-line-toggle">Paper Lines:
+                    <span aria-label="paper line status" class="status">on</span>
+                  </label>
+                  <label class="switch-toggle outer">
+                    <input aria-checked="true" checked aria-label="Paper Line Button" id="paper-line-toggle"
+                      type="checkbox" />
+                    <div></div>
+                  </label>
+                </div> -->
+
+                  <div class="postfix-input" data-postfix="deg">
+                    <label for="rot-er">Rotate</label>
+                    <input
+                      id="rot-er"
+                      min="-180"
+                      max="180"
+                      value="0"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="experimental">
+                    <!-- Removed option -->
+                    <div style="margin-top: 10px;" class="upload-paper-container">
+                      <label class="block" for="paper-file"
+                        >Upload Paper Image as Background</label
+                      >
+                      <input
+                        accept=".jpg, .jpeg, .png"
+                        type="file"
+                        id="paper-file"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
 
               <fieldset class="full-random-class">
                 <legend>Randomization</legend>
@@ -448,6 +548,8 @@
                         <input
                           id="letter-spacing"
                           value="0"
+                          min="0"
+                          max="10"
                           type="number"
                           class="qtyValue"
                         />
@@ -483,7 +585,7 @@
                         <i class="fa fa-minus decreaseQty"></i>
                         <input
                           id="word-rotation"
-                          value="3"
+                          value="4"
                           type="number"
                           class="qtyValue word-rotation"
                         />
@@ -499,7 +601,7 @@
                         <i class="fa fa-minus decreaseQty"></i>
                         <input
                           id="letter-rotation"
-                          value="10"
+                          value="6"
                           type="number"
                           class="qtyValue letter-rotation"
                         />
@@ -510,59 +612,7 @@
                 </div>
               </fieldset>
               <!-- Letter spacing, Paper Margin, Paper Lines, Paper Curvature -->
-              <fieldset>
-                <legend>Background Options</legend>
-
-                <div class="category-grid">
-                  <!-- <div>
-                  <label for="paper-margin-toggle">Paper Margin:
-                    <span aria-label="paper margin status" class="status">on</span>
-                  </label>
-                  <label class="switch-toggle outer">
-                    <input aria-checked="true" checked aria-label="Paper Margin Button" id="paper-margin-toggle"
-                      type="checkbox" />
-                    <div></div>
-                  </label>
-                </div> -->
-
-                  <!-- <div>
-                  <label for="paper-line-toggle">Paper Lines:
-                    <span aria-label="paper line status" class="status">on</span>
-                  </label>
-                  <label class="switch-toggle outer">
-                    <input aria-checked="true" checked aria-label="Paper Line Button" id="paper-line-toggle"
-                      type="checkbox" />
-                    <div></div>
-                  </label>
-                </div> -->
-
-                  <div class="postfix-input" data-postfix="deg">
-                    <label for="rot-er">Rotate</label>
-                    <input
-                      id="rot-er"
-                      min="0"
-                      max="60"
-                      value="0"
-                      type="number"
-                    />
-                  </div>
-
-                  <div class="experimental">
-                    <!-- Removed option -->
-                    <div class="upload-paper-container">
-                      <label class="block" for="paper-file"
-                        >Upload Paper Image as Background</label
-                      >
-                      <input
-                        accept=".jpg, .jpeg, .png"
-                        type="file"
-                        id="paper-file"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-
+              
               <!-- GENERATE IMAGE BUTTONS -->
               <hr
                 style="

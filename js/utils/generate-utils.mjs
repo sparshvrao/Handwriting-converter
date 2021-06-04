@@ -31,7 +31,7 @@ function applyPaperStyles() {
     // Since If the lit part happens to be on margins, the margins get invisible
     overlayEl.style.background = `linear-gradient(${
       Math.floor(Math.random() * (120 - 50 + 1)) + 50
-    }deg, #0008, #525252)`;
+    }deg, #0005, #0000)`;
   } else if (document.querySelector("#page-effects").value === "shadows") {
     overlayEl.style.background = `linear-gradient(${
       Math.random() * 360
